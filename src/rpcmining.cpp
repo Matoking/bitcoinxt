@@ -586,7 +586,7 @@ Value getblocktemplate(const Array& params, bool fHelp)
     // Some JSON libraries can't parse full-64-bit integers. So limit the limits to
     // the safe javascript number limit, which is 2^53-1
     // (see http://www.ecma-international.org/ecma-262/6.0/#sec-number.max_safe_integer )
-    uint64_t JSON_NUMBER_LIMIT = (1L<<53)-1;
+    uint64_t JSON_NUMBER_LIMIT = (1LL<<53)-1;
     uint64_t sigoplimit = Params().GetConsensus().MaxBlockLegacySigops(nBlockTime, sizeForkTime.load());
     result.push_back(Pair("sigoplimit", std::min(JSON_NUMBER_LIMIT, sigoplimit)));
     uint64_t accuratesigoplimit = Params().GetConsensus().MaxBlockAccurateSigops(nBlockTime, sizeForkTime.load());
